@@ -709,6 +709,24 @@ a:focus {
 
 // end client section
 
+// gallery section
+
+.gallery_section {
+    position: relative;
+
+    .heading_container {
+        margin-bottom: 25px;
+
+        h2 {
+            text-transform: uppercase;
+        }
+    }
+
+    
+}
+
+// end gallery section
+
 // contact section
 .contact_section {
     position: relative;
