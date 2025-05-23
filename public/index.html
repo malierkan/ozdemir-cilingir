@@ -34,37 +34,10 @@
 	<link href="css/responsive.css" rel="stylesheet" />
 
 	<!-- Analytics & Ads yükleme fonksiyonu -->
-	<script>
-		function loadAnalytics() {
-			// 1) Global site tag'i yükle
-			var gtagScript = document.createElement('script');
-			gtagScript.async = true;
-			gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16795811620';
-			document.head.appendChild(gtagScript);
-
-			// 2) Inline config ve conversion event
-			var inline = document.createElement('script');
-			inline.innerHTML = `
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){ dataLayer.push(arguments); }
-			gtag('js', new Date());
-			gtag('config', 'AW-16795811620');
-			gtag('event', 'conversion', {
-			  'send_to': 'AW-16795811620/38p5CJ-zh7waEKT-7sg-'
-			});
-		  `;
-			document.head.appendChild(inline);
-		}
-
-		// Eğer daha önce onay verilmişse hemen yükle
-		if (localStorage.getItem('cookiesAccepted') === 'true') {
-			loadAnalytics();
-		}
-	</script>
+	<script src="js/analytics-loader.js"></script>
 
 	<!-- Çerez Banner ve onay mantığını içeren JS -->
-	<script src="js/cookie-consent.js" defer></script>
-
+	<script src="s/cookie-consent.js" defer></script>
 
 	<title>Denizli Özdemir Çilingir</title>
 </head>
