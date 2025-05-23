@@ -1,14 +1,12 @@
 [build]
-  publish = "public"   # Artık public/ klasörünüzü yayın dizini olarak kullanıyoruz
+  publish = "public"
 
-# 1) Tüm HTTP isteklerini HTTPS'e yönlendir
 [[redirects]]
   from = "http://*"
   to = "https://:splat"
   status = 301
   force = true
 
-# 2) Tüm yollar için Security Headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -21,4 +19,4 @@
     # Basit XSS koruması
     X-XSS-Protection = "1; mode=block"
     # İçerik Güvenlik Politikası
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
