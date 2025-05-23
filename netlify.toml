@@ -1,21 +1,24 @@
-# Netlify Configuration (netlify.toml)
-
 [build]
-  publish = "build"
-  command = "npm run build"
+  publish = "public"   # Artık public/ klasörünüzü yayın dizini olarak kullanıyoruz
 
+# 1) Tüm HTTP isteklerini HTTPS'e yönlendir
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# 2) Tüm yollar için Security Headers
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = """
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://www.doubleclick.net;
-      style-src 'self' 'unsafe-inline';
-      img-src 'self' data: https://www.google.com https://www.youtube.com;
-      font-src 'self';
-      connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://stats.g.doubleclick.net;
-      frame-src 'self' https://www.youtube.com https://www.google.com;
-      frame-ancestors 'self';
-      upgrade-insecure-requests;
-      block-all-mixed-content;
-    """
+    # HTTPS zorlaması ve HSTS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # iFrame embedding engelleme
+    X-Frame-Options = "SAMEORIGIN"
+    # MIME tipi karışıklığını önleme
+    X-Content-Type-Options = "nosniff"
+    # Basit XSS koruması
+    X-XSS-Protection = "1; mode=block"
+    # İçerik Güvenlik Politikası
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
