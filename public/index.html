@@ -562,7 +562,7 @@
 								İletişim
 							</a>
 							<!-- Footer’da veya banner’da -->
-							<a href="/privacy.html" data-toggle="modal" data-target="#privacyModal">
+							<a href="javascript:void(0);" data-toggle="modal" data-target="#privacyModal">
 								Gizlilik Politikası
 							</a>
 						</div>
@@ -635,7 +635,55 @@
 			</div>
 		</div>
 	</div>
-	
+
+	<!-- Cookie Policy Modal -->
+	<div class="modal fade" id="cookiePolicyModal" tabindex="-1" role="dialog" aria-labelledby="cookiePolicyModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="cookiePolicyModalLabel">Çerez Politikası</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p><strong>Son Güncelleme:</strong> 23 Mayıs 2025</p>
+
+					<h6>1. Çerez Nedir?</h6>
+					<p>Çerezler, web sitelerinin kullanıcı deneyimini geliştirmek için tarayıcınızda sakladığı küçük
+						metin dosyalarıdır.</p>
+
+					<h6>2. Hangi Tür Çerezleri Kullanıyoruz?</h6>
+					<ul>
+						<li><strong>Zorunlu Çerezler:</strong> Web sitesinin çalışması için gereklidir.</li>
+						<li><strong>Performans Çerezleri:</strong> Ziyaretçi davranışlarını analiz eder.</li>
+						<li><strong>Hedefleme/Reklam Çerezleri:</strong> İlgi alanınıza göre reklam sunar.</li>
+					</ul>
+
+					<h6>3. Çerezleri Nasıl Kontrol Edebilirsiniz?</h6>
+					<p>Tarayıcı ayarlarınızı değiştirerek çerezleri silebilir veya engelleyebilirsiniz. Ancak bu durumda
+						bazı özellikler çalışmayabilir.</p>
+
+					<h6>4. Üçüncü Taraf Çerezleri</h6>
+					<p>Google Analytics ve Google Ads gibi hizmetler çerez kullanabilir. Detaylı bilgiye ilgili
+						servislerin gizlilik politikalarından ulaşabilirsiniz:</p>
+					<ul>
+						<li><a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası</a>
+						</li>
+					</ul>
+
+					<h6>5. Değişiklikler</h6>
+					<p>Bu çerez politikası zaman zaman güncellenebilir. Güncellemeler bu sayfada yayınlanır.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<!-- Privacy Policy Modal -->
 	<div class="modal fade" id="privacyModal" tabindex="-1" role="dialog" aria-labelledby="privacyModalLabel"
 		aria-hidden="true">
@@ -683,8 +731,8 @@
 
 					<h6>6. Çerez Politikası</h6>
 					<p>Web sitemizde; zorunlu, performans ve reklam çerezleri kullanılmaktadır. Çerez kullanımı hakkında
-						detaylı bilgi almak ve tercihleriniz üzerinde değişiklik yapmak için <a
-							href="/cookie-policy.html">Çerez Politikası</a> sayfamızı inceleyebilirsiniz.</p>
+						detaylı bilgi almak için <a href="javascript:void(0);" data-toggle="modal" data-target="#cookiePolicyModal">
+							Çerez Politikası</a> sayfamızı inceleyebilirsiniz.</p>
 
 					<h6>7. Üçüncü Taraf Hizmet Sağlayıcılar</h6>
 					<p>Verileriniz; Google Analytics, Google Ads (GTAG) ve gerekli diğer analitik/izleme hizmet
