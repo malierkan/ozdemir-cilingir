@@ -33,21 +33,37 @@
 	<!-- responsive style -->
 	<link href="css/responsive.css" rel="stylesheet" />
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16795811620">
-	</script>
+	<!-- Analytics & Ads yükleme fonksiyonu -->
 	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+		function loadAnalytics() {
+			// 1) Global site tag'i yükle
+			var gtagScript = document.createElement('script');
+			gtagScript.async = true;
+			gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16795811620';
+			document.head.appendChild(gtagScript);
 
-		gtag('config', 'AW-16795811620');
+			// 2) Inline config ve conversion event
+			var inline = document.createElement('script');
+			inline.innerHTML = `
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){ dataLayer.push(arguments); }
+			gtag('js', new Date());
+			gtag('config', 'AW-16795811620');
+			gtag('event', 'conversion', {
+			  'send_to': 'AW-16795811620/38p5CJ-zh7waEKT-7sg-'
+			});
+		  `;
+			document.head.appendChild(inline);
+		}
+
+		// Eğer daha önce onay verilmişse hemen yükle
+		if (localStorage.getItem('cookiesAccepted') === 'true') {
+			loadAnalytics();
+		}
 	</script>
 
-	<!-- Event snippet for Website traffic conversion page -->
-	<script>
-		gtag('event', 'conversion', { 'send_to': 'AW-16795811620/38p5CJ-zh7waEKT-7sg-' });
-	</script>
+	<!-- Çerez Banner ve onay mantığını içeren JS -->
+	<script src="js/cookie-consent.js" defer></script>
 
 
 	<title>Denizli Özdemir Çilingir</title>
@@ -545,6 +561,10 @@
 							<a href="#contact">
 								İletişim
 							</a>
+							<!-- Footer’da veya banner’da -->
+							<a href="/privacy.html" data-toggle="modal" data-target="#privacyModal">
+								Gizlilik Politikası
+							</a>
 						</div>
 					</div>
 				</div>
@@ -595,6 +615,119 @@
 	</footer>
 
 	<!-- end info section -->
+
+	<!-- Cookie Consent Modal -->
+	<div class="modal fade" id="cookieConsentModal" tabindex="-1" role="dialog"
+		aria-labelledby="cookieConsentModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="cookieConsentModalLabel">Çerez Kullanımı</h5>
+				</div>
+				<div class="modal-body">
+					Bu site, size en iyi deneyimi sunmak için çerezler kullanır. Devam edebilmek için lütfen çerez
+					kullanımını kabul edin.
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="acceptCookies" class="btn btn-success">Kabul Ediyorum</button>
+					<button type="button" id="rejectCookies" class="btn btn-danger">Kabul Etmiyorum</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Privacy Policy Modal -->
+	<div class="modal fade" id="privacyModal" tabindex="-1" role="dialog" aria-labelledby="privacyModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="privacyModalLabel">Gizlilik Politikası</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p><strong>Son Güncelleme:</strong> 23 Mayıs 2025</p>
+					<h6>1. Genel Bilgilendirme</h6>
+					<p>Bu Gizlilik Politikası, www.siteniz.com adresindeki web sitemizi ziyaret eden kullanıcıların
+						kişisel verilerinin işlenme usul ve esaslarını belirler. KVKK (6698 sayılı Kanun) ve GDPR (EU
+						2016/679) hükümlerine uygun olarak hazırlanmıştır.</p>
+
+					<h6>2. Veri Sorumlusu</h6>
+					<p>Veri Sorumlusu: Örnek Çilingir Ltd. Şti.<br>
+						Adres: Örnek Mah. Çilingir Cad. No:1, İstanbul, Türkiye<br>
+						E-posta: info@siteniz.com</p>
+
+					<h6>3. Toplanan Kişisel Veriler</h6>
+					<ul>
+						<li>IP adresi</li>
+						<li>Çerez verileri</li>
+						<li>Site kullanım istatistikleri</li>
+						<li>Reklam ve dönüşüm takip verileri</li>
+					</ul>
+
+					<h6>4. Kişisel Verilerin İşlenme Amaçları</h6>
+					<ul>
+						<li>Web sitesi performansını ölçmek ve iyileştirmek</li>
+						<li>Kullanıcı deneyimini kişiselleştirmek</li>
+						<li>Reklam ve pazarlama faaliyetlerini yürütmek</li>
+						<li>Hukuki yükümlülüklere uyum sağlamak</li>
+					</ul>
+
+					<h6>5. İşleme Hukuki Sebepleri</h6>
+					<ul>
+						<li>Kullanıcının açık rızası (GDPR Madde 6/1-a, KVKK Madde 5/1)</li>
+						<li>Hukuki yükümlülüklerin yerine getirilmesi (GDPR Madde 6/1-c, KVKK Madde 5/2-a)</li>
+					</ul>
+
+					<h6>6. Çerez Politikası</h6>
+					<p>Web sitemizde; zorunlu, performans ve reklam çerezleri kullanılmaktadır. Çerez kullanımı hakkında
+						detaylı bilgi almak ve tercihleriniz üzerinde değişiklik yapmak için <a
+							href="/cookie-policy.html">Çerez Politikası</a> sayfamızı inceleyebilirsiniz.</p>
+
+					<h6>7. Üçüncü Taraf Hizmet Sağlayıcılar</h6>
+					<p>Verileriniz; Google Analytics, Google Ads (GTAG) ve gerekli diğer analitik/izleme hizmet
+						sağlayıcıları tarafından işlenebilir. Bu hizmet sağlayıcıların gizlilik politikalarına aşağıdaki
+						bağlantılardan ulaşabilirsiniz:</p>
+					<ul>
+						<li><a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası</a>
+						</li>
+						<li><a href="https://policies.google.com/technologies/ads" target="_blank">Google Reklam
+								Teknolojileri Politikası</a></li>
+					</ul>
+
+					<h6>8. Kullanıcı Hakları</h6>
+					<p>Kullanıcılar aşağıdaki haklara sahiptir:</p>
+					<ul>
+						<li>Kişisel veri işlenip işlenmediğini öğrenme</li>
+						<li>Kişisel verileri güncelleme veya düzeltme</li>
+						<li>Verilerin silinmesini isteme</li>
+						<li>Veri işlenmesine itiraz etme</li>
+						<li>Veri taşınabilirliği hakkı</li>
+					</ul>
+					<p>Bu haklarınızı kullanmak için veri sorumlusuyla iletişime geçebilirsiniz: info@siteniz.com</p>
+
+					<h6>9. İletişim</h6>
+					<p>Her türlü soru, talep veya şikayetiniz için bize aşağıdaki iletişim bilgilerinden
+						ulaşabilirsiniz:</p>
+					<p>Adres: Örnek Mah. Çilingir Cad. No:1, İstanbul, Türkiye<br>
+						E-posta: info@siteniz.com<br>
+						Telefon: +90 212 000 00 00</p>
+
+					<footer>
+						<p>&copy; 2025 Örnek Çilingir Ltd. Şti. Tüm hakları saklıdır.</p>
+					</footer>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 
 	<!-- jQery -->
 	<script src="js/jquery-3.7.1.min.js"></script>

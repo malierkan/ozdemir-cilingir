@@ -1,0 +1,23 @@
+[build]
+  publish = "public"
+
+
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # HTTPS zorlaması ve HSTS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # iFrame embedding engelleme
+    X-Frame-Options = "SAMEORIGIN"
+    # MIME tipi karışıklığını önleme
+    X-Content-Type-Options = "nosniff"
+    # Basit XSS koruması
+    X-XSS-Protection = "1; mode=block"
+    # İçerik Güvenlik Politikası
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
